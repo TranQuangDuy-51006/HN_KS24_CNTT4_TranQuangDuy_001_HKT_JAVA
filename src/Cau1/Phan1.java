@@ -9,10 +9,32 @@ public class Phan1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
-        if (str == ""){
+
+        if (str.isEmpty()) {
             System.out.println("Khong nhap noi dung");
             return;
         }
 
+        int sum = 0;
+        String number = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+
+            if (Character.isDigit(c)) {
+                number += c;
+            } else {
+                if (!number.isEmpty()) {
+                    sum += Integer.parseInt(number);
+                    number = "";
+                }
+            }
+        }
+
+        if (!number.isEmpty()) {
+            sum += Integer.parseInt(number);
+        }
+
+        System.out.println(sum);
     }
 }
